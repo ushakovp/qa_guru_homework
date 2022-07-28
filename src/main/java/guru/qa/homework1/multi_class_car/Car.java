@@ -16,7 +16,7 @@ public class Car {
     public Car() {
     }
 
-    public static Car mostPowerCar(Car... cars) {
+    public static Car mostPowerfulCar(Car... cars) {
         Car mostPowerCar = cars[0];
         for (Car car : cars) {
             if (car.getEngine().getPower() > mostPowerCar.getEngine().getPower()) {
@@ -48,7 +48,7 @@ public class Car {
         SportCar car4 = new SportCar("cl3", engine1, new Driver("d3", 5), "Mazda", 360.5);
         System.out.println(car4);
 
-        System.out.println("Самая мощная машина: " + Car.mostPowerCar(car1, car2, car3, car4));
+        System.out.println("Самая мощная машина: " + Car.mostPowerfulCar(car1, car2, car3, car4));
 
     }
 
