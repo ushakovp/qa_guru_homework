@@ -1,4 +1,4 @@
-package guru.qa.homework1;
+package guru.qa.homework1.task1_2;
 
 public class Combinations {
     public static void main(String[] args) {

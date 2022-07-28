@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8464742-d405-4157-b05d-15450ccc9867" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/guru/qa/homework1/Phone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/guru/qa/homework1/single_class/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guru/qa/homework1/Combinations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guru/qa/homework1/task1_2/Combinations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guru/qa/homework1/Phone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guru/qa/homework1/single_class/Phone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/guru/qa/homework1/PrimitiveOverflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/guru/qa/homework1/task1_2/PrimitiveOverflow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,11 +50,24 @@
 }</component>
   <component name="RunManager" selected="Application.Phone">
     <configuration name="Combinations" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="guru.qa.homework1.Combinations" />
+      <option name="MAIN_CLASS_NAME" value="guru.qa.homework1.task1_2.Combinations" />
       <module name="qa_guru_homework.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="guru.qa.homework1.*" />
+          <option name="PATTERN" value="guru.qa.homework1.task1_2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Person" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="guru.qa.homework1.single_class.Person" />
+      <module name="qa_guru_homework.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="guru.qa.homework1.task1_2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -60,11 +76,11 @@
       </method>
     </configuration>
     <configuration name="Phone" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="guru.qa.homework1.Phone" />
+      <option name="MAIN_CLASS_NAME" value="guru.qa.homework1.single_class.Phone" />
       <module name="qa_guru_homework.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="guru.qa.homework1.*" />
+          <option name="PATTERN" value="guru.qa.homework1.task1_2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -73,11 +89,11 @@
       </method>
     </configuration>
     <configuration name="PrimitiveOverflow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="guru.qa.homework1.PrimitiveOverflow" />
+      <option name="MAIN_CLASS_NAME" value="guru.qa.homework1.task1_2.PrimitiveOverflow" />
       <module name="qa_guru_homework.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="guru.qa.homework1.*" />
+          <option name="PATTERN" value="guru.qa.homework1.task1_2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -87,6 +103,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Person" />
         <item itemvalue="Application.Phone" />
         <item itemvalue="Application.Combinations" />
         <item itemvalue="Application.PrimitiveOverflow" />
@@ -116,13 +133,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659026494485</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Добавлен класс Phone">
+      <created>1659028042314</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1659028042314</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Вычисление комбинациий типов данных" />
-    <option name="LAST_COMMIT_MESSAGE" value="Вычисление комбинациий типов данных" />
+    <MESSAGE value="Добавлен класс Phone" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлен класс Phone" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

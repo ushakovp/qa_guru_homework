@@ -1,4 +1,4 @@
-package guru.qa.homework1;
+package guru.qa.homework1.single_class;
 
 public class Phone {
     int number;
