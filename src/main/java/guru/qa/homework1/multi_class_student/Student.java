@@ -1,4 +1,4 @@
-package guru.qa.homework1.multi_class;
+package guru.qa.homework1.multi_class_student;
 
 import java.util.ArrayList;
 import java.util.List;
