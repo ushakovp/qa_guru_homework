@@ -18,6 +18,8 @@ public class Student {
 
     public static void main(String[] args) {
         Student aspirant = new Aspirant("n1", "l1", "1", 5);
+        System.out.println(aspirant.getScholarship());
+
         List<Student> students = new ArrayList<>();
         students.add(new Student("n2", "l2", "1", 4.5));
         students.add(new Student("n3", "l3", "1", 4.5));
