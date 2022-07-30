@@ -12,6 +12,13 @@ public class Person {
     public Person() {
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "fullName='" + fullName + '\'' +
+                '}';
+    }
+
     public static void main(String[] args) {
         Person person1 = new Person();
         person1.age = 18;
