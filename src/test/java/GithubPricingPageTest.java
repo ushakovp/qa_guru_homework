@@ -19,6 +19,7 @@ public class GithubPricingPageTest {
     @Test
     void shouldOpenPricingPage() {
         open("https://github.com/");
+        $("html").hover();
 
         $(byText("Pricing")).hover();
         $(byXpath("//nav/ul/li[6]/details/div")).shouldBe(visible);
