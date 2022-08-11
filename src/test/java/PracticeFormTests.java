@@ -29,7 +29,7 @@ public class PracticeFormTests {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOptionContainingText("September");
         $(".react-datepicker__year-select").selectOptionContainingText("1939");
-        $("div[aria-label=\"Choose Saturday, September 2nd, 1939\"").click();
+        $(".react-datepicker__day--001:not(.react-datepicker__day--outside-month)").click();
         $("label[for=\"hobbies-checkbox-1\"]").click();
         $("label[for=\"hobbies-checkbox-3\"]").click();
         $("#subjectsInput").setValue("Test");
@@ -47,7 +47,7 @@ public class PracticeFormTests {
         $("tbody tr", 1).shouldHave(text("Student Email"), text("test@test.com"));
         $("tbody tr", 2).shouldHave(text("Gender"), text("Male"));
         $("tbody tr", 3).shouldHave(text("Mobile"), text("8912856050"));
-        $("tbody tr", 4).shouldHave(text("Date of Birth"), text("02 September,1939"));
+        $("tbody tr", 4).shouldHave(text("Date of Birth"), text("01 September,1939"));
 
         //$("tbody tr", 5).shouldHave(text("Subject"), text("Test"));
         $("tbody tr", 6).shouldHave(text("Hobbies"), text("Sports, Music"));
