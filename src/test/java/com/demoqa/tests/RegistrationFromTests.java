@@ -11,11 +11,18 @@ public class RegistrationFromTests {
     private final String email = "test@test.com";
     private final String telephoneNumber = "8912856050";
     private final String gender = "Other";
-    private final String hobbie = "Sports";
+    private final String hobby = "Sports";
     private final String pathToPicture = "File.png";
     private final String address = "ул. Пушкина";
     private final String state = "NCR";
     private final String city = "Noida";
+    private final String[] subjects = {"Maths", "Arts", "Physics"};
+
+    private final String dayOfBirth = "01";
+
+    private final String monthOfBirth = "September";
+
+    private final String yearOfBirth = "1939";
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
     @BeforeAll
@@ -32,9 +39,9 @@ public class RegistrationFromTests {
                 .setEmail(email)
                 .setTelephoneNumber(telephoneNumber)
                 .setGender(gender)
-                .setDateOfBirth("01", "September", "1939")
-                .setHobbie(hobbie)
-                .setSubjects(new String[]{"Maths", "Arts", "Physics"})
+                .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
+                .setHobby(hobby)
+                .setSubjects(subjects)
                 .uploadPicture(pathToPicture)
                 .setAddress(address)
                 .setStateAndCity(state, city)
@@ -47,7 +54,7 @@ public class RegistrationFromTests {
                 .checkResult("Mobile", telephoneNumber)
                 .checkResult("Date of Birth", "01 September,1939")
                 .checkResult("Subjects", "Maths, Arts, Physics")
-                .checkResult("Hobbies", hobbie)
+                .checkResult("Hobbies", hobby)
                 .checkResult("Picture", pathToPicture)
                 .checkResult("Address", address)
                 .checkResult("State and City", state + " " + city)
