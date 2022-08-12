@@ -2,24 +2,26 @@ package com.demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.RegistrationFormPage;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class RegistrationFromTests {
-    private final String name = "Ivan";
-    private final String lastName = "Ivanov";
-    private final String email = "test@test.com";
-    private final String telephoneNumber = "8912856050";
     private final String gender = "Other";
     private final String hobby = "Sports";
     private final String pathToPicture = "File.png";
-    private final String address = "ул. Пушкина";
     private final String state = "NCR";
     private final String city = "Noida";
     private final String[] subjects = {"Maths", "Arts", "Physics"};
     private final String dayOfBirth = "01";
     private final String monthOfBirth = "September";
     private final String yearOfBirth = "1939";
+    Faker faker = new Faker();
+    private final String name = faker.name().firstName();
+    private final String lastName = faker.name().lastName();
+    private final String email = faker.internet().emailAddress();
+    private final String telephoneNumber = faker.numerify("##########");
+    private final String address = faker.address().fullAddress();
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
     @BeforeAll
