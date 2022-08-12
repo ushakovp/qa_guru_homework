@@ -17,11 +17,8 @@ public class RegistrationFromTests {
     private final String state = "NCR";
     private final String city = "Noida";
     private final String[] subjects = {"Maths", "Arts", "Physics"};
-
     private final String dayOfBirth = "01";
-
     private final String monthOfBirth = "September";
-
     private final String yearOfBirth = "1939";
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
