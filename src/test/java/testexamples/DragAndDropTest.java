@@ -1,4 +1,4 @@
-package random;
+package testexamples;
 
 import org.junit.jupiter.api.Test;
 

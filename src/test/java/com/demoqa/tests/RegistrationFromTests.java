@@ -2,26 +2,32 @@ package com.demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.RegistrationFormPage;
-import com.github.javafaker.Faker;
+import com.demoqa.utils.RandomDataGenerator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.sleep;
+import static com.demoqa.utils.ExpectedResultsHelper.expectedDayOfBirth;
+import static com.demoqa.utils.ExpectedResultsHelper.expectedSubjects;
+
 public class RegistrationFromTests {
-    private final String gender = "Other";
-    private final String hobby = "Sports";
+
     private final String pathToPicture = "File.png";
     private final String state = "NCR";
     private final String city = "Noida";
-    private final String[] subjects = {"Maths", "Arts", "Physics"};
-    private final String dayOfBirth = "01";
-    private final String monthOfBirth = "September";
-    private final String yearOfBirth = "1939";
-    Faker faker = new Faker();
-    private final String name = faker.name().firstName();
-    private final String lastName = faker.name().lastName();
-    private final String email = faker.internet().emailAddress();
-    private final String telephoneNumber = faker.numerify("##########");
-    private final String address = faker.address().fullAddress();
+    RandomDataGenerator randomDataGenerator = new RandomDataGenerator();
+    private final String gender = randomDataGenerator.getRandomGender();
+    private final String hobby = randomDataGenerator.getRandomHobby();
+    private final String[] subjects = randomDataGenerator.getSubjects();
+    private final String dayOfBirth = randomDataGenerator.getbDay();
+    private final String monthOfBirth = randomDataGenerator.getbMonth();
+    private final String yearOfBirth = randomDataGenerator.getbYear();
+    private final String name = randomDataGenerator.getRandomFirstName();
+    private final String lastName = randomDataGenerator.getRandomLastName();
+    private final String email = randomDataGenerator.getRandomEmail();
+    ;
+    private final String telephoneNumber = randomDataGenerator.getRandomPhone();
+    private final String address = randomDataGenerator.getRandomAddress();
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
     @BeforeAll
@@ -46,13 +52,17 @@ public class RegistrationFromTests {
                 .setStateAndCity(state, city)
                 .submit();
 
+        sleep(3000);
+        String expectedDOB = expectedDayOfBirth(dayOfBirth, monthOfBirth, yearOfBirth);
+        String expectedSubjects = expectedSubjects(subjects);
+
         registrationFormPage.checkResultsTableVisible()
                 .checkResult("Student Name", name + " " + lastName)
                 .checkResult("Student Email", email)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", telephoneNumber)
-                .checkResult("Date of Birth", "01 September,1939")
-                .checkResult("Subjects", "Maths, Arts, Physics")
+                .checkResult("Date of Birth", expectedDOB)
+                .checkResult("Subjects", expectedSubjects)
                 .checkResult("Hobbies", hobby)
                 .checkResult("Picture", pathToPicture)
                 .checkResult("Address", address)
@@ -69,6 +79,7 @@ public class RegistrationFromTests {
                 .setTelephoneNumber(telephoneNumber)
                 .submit();
 
+        sleep(3000);
         registrationFormPage.checkResultsTableVisible()
                 .checkResult("Student Name", name + " " + lastName)
                 .checkResult("Gender", gender)
