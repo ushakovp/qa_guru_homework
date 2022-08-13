@@ -79,8 +79,10 @@ public class RegistrationFromTests {
                 .setTelephoneNumber(telephoneNumber)
                 .submit();
 
+        String expectedFullName = name + " " + lastName;
+
         registrationFormPage.checkResultsTableVisible()
-                .checkResult("Student Name", name + " " + lastName)
+                .checkResult("Student Name", expectedFullName)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", telephoneNumber)
                 .closeModal();
