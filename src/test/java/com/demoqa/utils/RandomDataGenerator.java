@@ -24,11 +24,11 @@ public class RandomDataGenerator {
         getRandomStateAndCity();
     }
 
-    public String getState() {
+    public String getRandomState() {
         return state;
     }
 
-    public String getCity() {
+    public String getRandomCity() {
         return city;
     }
 
@@ -70,7 +70,7 @@ public class RandomDataGenerator {
         bYear = dob[2];
     }
 
-    public String[] getSubjects() {
+    public String[] getRandomSubjects() {
         ArrayList<String> subjects = new ArrayList<>(Arrays.asList(dataClass.subjects10));
         int randomLength = generator.nextInt(dataClass.subjects10.length - 1) + 1;
         String[] subject = new String[randomLength];
@@ -103,15 +103,15 @@ public class RandomDataGenerator {
         return cities[generator.nextInt(cities.length)];
     }
 
-    public String getbDay() {
+    public String getRandomBDay() {
         return bDay;
     }
 
-    public String getbMonth() {
+    public String getRandomBMonth() {
         return bMonth;
     }
 
-    public String getbYear() {
+    public String getRandomBYear() {
         return bYear;
     }
 }

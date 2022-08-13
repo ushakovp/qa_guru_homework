@@ -12,14 +12,14 @@ import static com.demoqa.utils.ExpectedResultsHelper.expectedSubjects;
 public class RegistrationFromTests {
 
     RandomDataGenerator randomDataGenerator = new RandomDataGenerator();
-    private final String city = randomDataGenerator.getCity();
-    private final String state = randomDataGenerator.getState();
+    private final String city = randomDataGenerator.getRandomCity();
+    private final String state = randomDataGenerator.getRandomState();
     private final String gender = randomDataGenerator.getRandomGender();
     private final String hobby = randomDataGenerator.getRandomHobby();
-    private final String[] subjects = randomDataGenerator.getSubjects();
-    private final String dayOfBirth = randomDataGenerator.getbDay();
-    private final String monthOfBirth = randomDataGenerator.getbMonth();
-    private final String yearOfBirth = randomDataGenerator.getbYear();
+    private final String[] subjects = randomDataGenerator.getRandomSubjects();
+    private final String dayOfBirth = randomDataGenerator.getRandomBDay();
+    private final String monthOfBirth = randomDataGenerator.getRandomBMonth();
+    private final String yearOfBirth = randomDataGenerator.getRandomBYear();
     private final String name = randomDataGenerator.getRandomFirstName();
     private final String lastName = randomDataGenerator.getRandomLastName();
     private final String email = randomDataGenerator.getRandomEmail();
