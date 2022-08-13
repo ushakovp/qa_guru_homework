@@ -17,7 +17,5 @@ public class DataClass {
 
     public String[] subjects10 = {"Arts", "Biology", "Chemistry", "English", "Maths", "Physics", "Civics", "Accounting", "Commerce", "Economics"};
 
-    //HashMap<String, String[]> passportsAndNames = new HashMap<>();
-
 
 }

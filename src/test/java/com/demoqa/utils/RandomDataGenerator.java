@@ -86,20 +86,20 @@ public class RandomDataGenerator {
     private void getRandomStateAndCity() {
         state = dataClass.states[generator.nextInt(dataClass.states.length)];
         if (state.equals("NCR")) {
-            city = getRandomCity(dataClass.citiesNCR);
+            city = getRandomCityFromState(dataClass.citiesNCR);
         }
         if (state.equals("Uttar Pradesh")) {
-            city = getRandomCity(dataClass.citiesPradesh);
+            city = getRandomCityFromState(dataClass.citiesPradesh);
         }
         if (state.equals("Haryana")) {
-            city = getRandomCity(dataClass.citiesHaryana);
+            city = getRandomCityFromState(dataClass.citiesHaryana);
         }
         if (state.equals("Rajasthan")) {
-            city = getRandomCity(dataClass.citiesRajasthan);
+            city = getRandomCityFromState(dataClass.citiesRajasthan);
         }
     }
 
-    private String getRandomCity(String[] cities) {
+    private String getRandomCityFromState(String[] cities) {
         return cities[generator.nextInt(cities.length)];
     }
 
