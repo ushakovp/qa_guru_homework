@@ -6,16 +6,14 @@ import com.demoqa.utils.RandomDataGenerator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.sleep;
 import static com.demoqa.utils.ExpectedResultsHelper.expectedDayOfBirth;
 import static com.demoqa.utils.ExpectedResultsHelper.expectedSubjects;
 
 public class RegistrationFromTests {
 
-    private final String pathToPicture = "File.png";
-    private final String state = "NCR";
-    private final String city = "Noida";
     RandomDataGenerator randomDataGenerator = new RandomDataGenerator();
+    private final String city = randomDataGenerator.getCity();
+    private final String state = randomDataGenerator.getState();
     private final String gender = randomDataGenerator.getRandomGender();
     private final String hobby = randomDataGenerator.getRandomHobby();
     private final String[] subjects = randomDataGenerator.getSubjects();
@@ -25,7 +23,6 @@ public class RegistrationFromTests {
     private final String name = randomDataGenerator.getRandomFirstName();
     private final String lastName = randomDataGenerator.getRandomLastName();
     private final String email = randomDataGenerator.getRandomEmail();
-    ;
     private final String telephoneNumber = randomDataGenerator.getRandomPhone();
     private final String address = randomDataGenerator.getRandomAddress();
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
@@ -38,6 +35,8 @@ public class RegistrationFromTests {
 
     @Test
     public void fillFormTest() {
+        String pathToPicture = "File.png";
+
         registrationFormPage.openPage()
                 .setName(name)
                 .setLastName(lastName)
@@ -52,12 +51,13 @@ public class RegistrationFromTests {
                 .setStateAndCity(state, city)
                 .submit();
 
-        sleep(3000);
+        String expectedFullName = name + " " + lastName;
         String expectedDOB = expectedDayOfBirth(dayOfBirth, monthOfBirth, yearOfBirth);
         String expectedSubjects = expectedSubjects(subjects);
+        String expectedStateAndCity = state + " " + city;
 
         registrationFormPage.checkResultsTableVisible()
-                .checkResult("Student Name", name + " " + lastName)
+                .checkResult("Student Name", expectedFullName)
                 .checkResult("Student Email", email)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", telephoneNumber)
@@ -66,7 +66,7 @@ public class RegistrationFromTests {
                 .checkResult("Hobbies", hobby)
                 .checkResult("Picture", pathToPicture)
                 .checkResult("Address", address)
-                .checkResult("State and City", state + " " + city)
+                .checkResult("State and City", expectedStateAndCity)
                 .closeModal();
     }
 
@@ -79,7 +79,6 @@ public class RegistrationFromTests {
                 .setTelephoneNumber(telephoneNumber)
                 .submit();
 
-        sleep(3000);
         registrationFormPage.checkResultsTableVisible()
                 .checkResult("Student Name", name + " " + lastName)
                 .checkResult("Gender", gender)

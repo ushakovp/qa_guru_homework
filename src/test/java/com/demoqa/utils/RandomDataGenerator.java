@@ -15,8 +15,21 @@ public class RandomDataGenerator {
     private String bMonth;
     private String bYear;
 
+    private String state;
+
+    private String city;
+
     public RandomDataGenerator() {
         getRandomBirthDay();
+        getRandomStateAndCity();
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     public String getRandomFirstName() {
@@ -58,7 +71,7 @@ public class RandomDataGenerator {
     }
 
     public String[] getSubjects() {
-        ArrayList<String> subjects = new ArrayList<String>(Arrays.asList(dataClass.subjects10));
+        ArrayList<String> subjects = new ArrayList<>(Arrays.asList(dataClass.subjects10));
         int randomLength = generator.nextInt(dataClass.subjects10.length - 1) + 1;
         String[] subject = new String[randomLength];
 
@@ -68,6 +81,26 @@ public class RandomDataGenerator {
             subjects.remove(0);
         }
         return subject;
+    }
+
+    private void getRandomStateAndCity() {
+        state = dataClass.states[generator.nextInt(dataClass.states.length)];
+        if (state.equals("NCR")) {
+            city = getRandomCity(dataClass.citiesNCR);
+        }
+        if (state.equals("Uttar Pradesh")) {
+            city = getRandomCity(dataClass.citiesPradesh);
+        }
+        if (state.equals("Haryana")) {
+            city = getRandomCity(dataClass.citiesHaryana);
+        }
+        if (state.equals("Rajasthan")) {
+            city = getRandomCity(dataClass.citiesRajasthan);
+        }
+    }
+
+    private String getRandomCity(String[] cities) {
+        return cities[generator.nextInt(cities.length)];
     }
 
     public String getbDay() {
