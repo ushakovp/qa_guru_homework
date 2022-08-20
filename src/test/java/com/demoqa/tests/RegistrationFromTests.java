@@ -4,7 +4,10 @@ import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.RegistrationFormPage;
 import com.demoqa.utils.RandomDataGenerator;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.demoqa.utils.ExpectedResultsHelper.expectedDayOfBirth;
 import static com.demoqa.utils.ExpectedResultsHelper.expectedSubjects;
@@ -33,6 +36,7 @@ public class RegistrationFromTests {
         Configuration.browserSize = "1920x1080";
     }
 
+    @DisplayName("Отправляется форма заполеннная случайными данными")
     @Test
     public void fillFormTest() {
         String pathToPicture = "File.png";
@@ -70,6 +74,7 @@ public class RegistrationFromTests {
                 .closeModal();
     }
 
+    @DisplayName("Отправляется форма заполненная минимальным количеством данных")
     @Test
     public void fillFormMinimalTest() {
         registrationFormPage.openPage()
@@ -84,6 +89,25 @@ public class RegistrationFromTests {
         registrationFormPage.checkResultsTableVisible()
                 .checkResult("Student Name", expectedFullName)
                 .checkResult("Gender", gender)
+                .checkResult("Mobile", telephoneNumber)
+                .closeModal();
+    }
+
+    @ValueSource(strings = {"Male", "Female", "Other"})
+    @ParameterizedTest(name = "Отправляется форма с гендером {0}")
+    public void fillFormMinimalWithAllGendersTest(String testData) {
+        registrationFormPage.openPage()
+                .setName(name)
+                .setLastName(lastName)
+                .setGender(testData)
+                .setTelephoneNumber(telephoneNumber)
+                .submit();
+
+        String expectedFullName = name + " " + lastName;
+
+        registrationFormPage.checkResultsTableVisible()
+                .checkResult("Student Name", expectedFullName)
+                .checkResult("Gender", testData)
                 .checkResult("Mobile", telephoneNumber)
                 .closeModal();
     }
