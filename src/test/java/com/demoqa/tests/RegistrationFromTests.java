@@ -7,7 +7,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static com.demoqa.utils.ExpectedResultsHelper.expectedDayOfBirth;
 import static com.demoqa.utils.ExpectedResultsHelper.expectedSubjects;
@@ -34,6 +38,14 @@ public class RegistrationFromTests {
     static void configure() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
+    }
+
+    static Stream<Arguments> fillFormMinimalWithParametrizedSubjectsTest() {
+        return Stream.of(
+                Arguments.of((Object) new String[]{"Arts"}),
+                Arguments.of((Object) new String[]{"Biology", "Chemistry"}),
+                Arguments.of((Object) new String[]{"English", "Maths", "Physics"})
+        );
     }
 
     @DisplayName("Отправляется форма заполеннная случайными данными")
@@ -109,6 +121,28 @@ public class RegistrationFromTests {
                 .checkResult("Student Name", expectedFullName)
                 .checkResult("Gender", testData)
                 .checkResult("Mobile", telephoneNumber)
+                .closeModal();
+    }
+
+    @MethodSource()
+    @ParameterizedTest(name = "Отправляется форма с subject {0}")
+    public void fillFormMinimalWithParametrizedSubjectsTest(String[] testData) {
+        registrationFormPage.openPage()
+                .setName(name)
+                .setLastName(lastName)
+                .setGender(gender)
+                .setTelephoneNumber(telephoneNumber)
+                .setSubjects(testData)
+                .submit();
+
+        String expectedFullName = name + " " + lastName;
+        String expectedSubjects = expectedSubjects(testData);
+
+        registrationFormPage.checkResultsTableVisible()
+                .checkResult("Student Name", expectedFullName)
+                .checkResult("Gender", gender)
+                .checkResult("Mobile", telephoneNumber)
+                .checkResult("Subjects", expectedSubjects)
                 .closeModal();
     }
 }
