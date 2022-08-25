@@ -10,7 +10,10 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-public class WebTests {
+public class GithubIssueTests {
+    private static final String REPOSITORY = "selenide";
+    private static final String ISSUE = "Add caching API into standard API";
+    WebSteps ws = new WebSteps();
 
     @BeforeAll
     static void setupAllureReports() {
@@ -21,11 +24,11 @@ public class WebTests {
     void repositoryHasIssueListenerTest() {
         open("https://github.com/");
         $("[data-test-selector=nav-search-input]").click();
-        $("[data-test-selector=nav-search-input]").setValue("selenide");
+        $("[data-test-selector=nav-search-input]").setValue(REPOSITORY);
         $("[data-test-selector=nav-search-input]").submit();
         $$(".repo-list-item").first().$("a").click();
         $("#issues-tab").click();
-        $(byText("Add caching API into standard API")).should(exist);
+        $(byText(ISSUE)).should(exist);
 
     }
 
@@ -37,7 +40,7 @@ public class WebTests {
 
         step("Ищем репозиторий Selenide", () -> {
             $("[data-test-selector=nav-search-input]").click();
-            $("[data-test-selector=nav-search-input]").setValue("selenide");
+            $("[data-test-selector=nav-search-input]").setValue(REPOSITORY);
             $("[data-test-selector=nav-search-input]").submit();
         });
 
@@ -50,7 +53,16 @@ public class WebTests {
         });
 
         step("Проверяем, что есть нужная Issue", () -> {
-            $(byText("Add caching API into standard API")).should(exist);
+            $(byText(ISSUE)).should(exist);
         });
+    }
+
+    @Test
+    void repositoryHasIssueWebStepsTest() {
+        ws.openMainPage();
+        ws.repositorySearch(REPOSITORY);
+        ws.openRepository();
+        ws.openIssueTab();
+        ws.checkIssue(ISSUE);
     }
 }
