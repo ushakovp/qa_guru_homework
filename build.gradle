@@ -33,7 +33,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    systemProperties(System.getSystemProperties())
+    systemProperties(System.getProperties())
 }
 
 tasks.withType(JavaCompile) {
