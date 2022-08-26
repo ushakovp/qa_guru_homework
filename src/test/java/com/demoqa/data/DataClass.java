@@ -7,7 +7,7 @@ public class DataClass {
 
     public String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
 
-    public String[] citiesNCR = {"Delhi", "Gurgaon", "Nioda"};
+    public String[] citiesNCR = {"Delhi", "Gurgaon", "Noida"};
 
     public String[] citiesPradesh = {"Agra", "Lucknow", "Merrut"};
 
