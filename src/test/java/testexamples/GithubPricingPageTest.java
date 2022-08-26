@@ -27,6 +27,6 @@ public class GithubPricingPageTest {
         $(byXpath("//nav/ul/li[6]/details/div")).shouldBe(visible);
 
         $(byText("Compare plans")).click();
-        $("body").shouldHave(text("Choose the plan that’s right for you."));
+        $("body").shouldHave(text("Get the complete developer platform."));
     }
 }
