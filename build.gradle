@@ -27,7 +27,10 @@ dependencies {
             'com.codeborne:selenide:6.7.2',
             'org.slf4j:slf4j-simple:1.7.36',
             'com.github.javafaker:javafaker:1.0.2',
-            'io.qameta.allure:allure-selenide:2.19.0'
+            'io.qameta.allure:allure-selenide:2.19.0',
+            'com.codeborne:pdf-test:1.7.0',
+            'com.codeborne:xls-test:1.5.0',
+            'com.opencsv:opencsv:5.6'
     )
 }
 
