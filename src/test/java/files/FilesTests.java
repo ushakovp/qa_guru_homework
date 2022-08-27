@@ -1,6 +1,7 @@
 package files;
 
 import com.codeborne.pdftest.PDF;
+import com.codeborne.xlstest.XLS;
 import com.opencsv.CSVReader;
 import org.junit.jupiter.api.Test;
 
@@ -51,6 +52,19 @@ public class FilesTests {
             String asString = new String(fileContent, UTF_8);
             assertThat(asString).contains("TestData1");
             assertThat(asString).contains("TestData2");
+        }
+    }
+
+    @Test
+    void XLSXParseTest() throws Exception {
+        try (InputStream is = cl.getResourceAsStream("file_example_XLSX_5000.xlsx")) {
+            assert is != null;
+            XLS xls = new XLS(is);
+            assertThat(xls.excel.getSheetAt(0)
+                    .getRow(1)
+                    .getCell(7)
+                    .getNumericCellValue()
+            ).isEqualTo(1562);
         }
     }
 
