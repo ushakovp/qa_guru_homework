@@ -18,7 +18,7 @@ public class FilesTestExamples {
     ClassLoader cl = FilesTestExamples.class.getClassLoader();
 
     @Test
-    void PDFParseTest() throws Exception {
+    void pDFParseTest() throws Exception {
         try (InputStream is = cl.getResourceAsStream("files/sample.pdf")) {
             assert is != null;
             PDF pdf = new PDF(is);
@@ -28,7 +28,7 @@ public class FilesTestExamples {
     }
 
     @Test
-    void CSVParseTest() throws Exception {
+    void cSVParseTest() throws Exception {
         try (InputStream is = cl.getResourceAsStream("files/addresses.csv")) {
             assert is != null;
             CSVReader csvReader = new CSVReader(new InputStreamReader(is, UTF_8));
@@ -45,7 +45,7 @@ public class FilesTestExamples {
     }
 
     @Test
-    void TXTParseTest() throws Exception {
+    void tXTParseTest() throws Exception {
         try (InputStream is = cl.getResourceAsStream("files/sample.txt")) {
             assert is != null;
             byte[] fileContent = is.readAllBytes();
@@ -56,7 +56,7 @@ public class FilesTestExamples {
     }
 
     @Test
-    void XLSXParseTest() throws Exception {
+    void xLSXParseTest() throws Exception {
         try (InputStream is = cl.getResourceAsStream("files/file_example_XLSX_5000.xlsx")) {
             assert is != null;
             XLS xls = new XLS(is);
