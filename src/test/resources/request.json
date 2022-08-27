@@ -1,0 +1,26 @@
+{
+  "ssylka": "d63ea2ab-d5c9-11ec-80de-00155d97881c",
+  "citizenship": "RUS",
+  "fl": true,
+  "seriya": 9999,
+  "nomer": 666666,
+  "familiya": "Иванов",
+  "imya": "Иван",
+  "otchestvo": "Иванович",
+  "nomerSvidetelstva": "999-999-999 99",
+  "email": "test@test.com",
+  "files": [
+    {
+      "file_name": "test.pdf",
+      "file_data": "JVBERi0xLjMNMSAwIG9iag08PC9UeXBlIC9YT2JqZWN0IC9TdWJ0eXBlIC9JbWFn\r\nZSAvTmFtZSAvSW0xIC9XaWR0aCAxNjU0IC9IZWlnaHQgMjMzOCAvTGVuZ3RoIDEz\r\nOTMzNi9Db2xvclNwYWNlIC9EZXZpY2VSR0IgL0Jpd"
+    },
+    {
+      "file_name": "snils.pdf",
+      "file_data": "JVBERi0xLjMNMSAwIG9iag08PC9UeXBlIC9YT2JqZWN0IC9TdWJ0eXBlIC9JbWFn\r\nZSAvTmFtZSAvSW0xIC9XaWR0aCAxNjU0IC9IZWlnaHQgMjMzOCAvTGVuZ3RoIDEy\r\nODMwMjQvQ29sb3JTcGFjZSAvRGV2aWNlUkdCIC9CaX"
+    },
+    {
+      "file_name": "passport.pdf",
+      "file_data": "JVBERi0xLjMNMSAwIG9iag08PC9UeXBlIC9YT2JqZWN0IC9TdWJ0eXBlIC9JbWFn\r\nZSAvTmFtZSAvSW0xIC9XaWR0aCAxNjU0IC9IZWlnaHQgMjMzOCAvTGVuZ3RoIDI2\r\nNjM1MC9Db2xvclNwYWNlIC9EZXZpY2VSR0IgL0JpdH"
+    }
+  ]
+}
