@@ -5,21 +5,22 @@ import com.codeborne.xlstest.XLS;
 import com.opencsv.CSVReader;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.zip.ZipFile;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.assertj.core.api.Assertions.assertThat;
 
-
-public class FilesTests {
-
-    ClassLoader cl = FilesTests.class.getClassLoader();
+public class ZIPFileParseTests {
+    private static final String PATHTOZIP = "src/test/resources/sample.zip";
 
     @Test
-    void PDFParseTest() throws Exception {
-        try (InputStream is = cl.getResourceAsStream("sample.pdf")) {
+    void ZipParsePDFTest() throws Exception {
+        try (ZipFile zipFile = new ZipFile(new File(PATHTOZIP))) {
+            InputStream is = zipFile.getInputStream(zipFile.getEntry("sample.pdf"));
             assert is != null;
             PDF pdf = new PDF(is);
             assertThat(pdf.producer).contains("Nevrona Designs");
@@ -28,8 +29,9 @@ public class FilesTests {
     }
 
     @Test
-    void CSVParseTest() throws Exception {
-        try (InputStream is = cl.getResourceAsStream("addresses.csv")) {
+    void ZipParseCSVTest() throws Exception {
+        try (ZipFile zipFile = new ZipFile(new File(PATHTOZIP))) {
+            InputStream is = zipFile.getInputStream(zipFile.getEntry("addresses.csv"));
             assert is != null;
             CSVReader csvReader = new CSVReader(new InputStreamReader(is, UTF_8));
             List<String[]> csv = csvReader.readAll();
@@ -45,19 +47,9 @@ public class FilesTests {
     }
 
     @Test
-    void TXTParseTest() throws Exception {
-        try (InputStream is = cl.getResourceAsStream("sample.txt")) {
-            assert is != null;
-            byte[] fileContent = is.readAllBytes();
-            String asString = new String(fileContent, UTF_8);
-            assertThat(asString).contains("TestData1");
-            assertThat(asString).contains("TestData2");
-        }
-    }
-
-    @Test
-    void XLSXParseTest() throws Exception {
-        try (InputStream is = cl.getResourceAsStream("file_example_XLSX_5000.xlsx")) {
+    void ZipParseXLSTest() throws Exception {
+        try (ZipFile zipFile = new ZipFile(new File(PATHTOZIP))) {
+            InputStream is = zipFile.getInputStream(zipFile.getEntry("file_example_XLSX_5000.xlsx"));
             assert is != null;
             XLS xls = new XLS(is);
             assertThat(xls.excel.getSheetAt(0)
@@ -66,9 +58,5 @@ public class FilesTests {
                     .getNumericCellValue()
             ).isEqualTo(1562);
         }
-    }
-
-    @Test
-    void ZipParseTest() {
     }
 }
