@@ -8,8 +8,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.util.Objects;
-
 import static java.lang.String.format;
 
 public class TestBase {
@@ -28,7 +26,7 @@ public class TestBase {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
 
-        if (Objects.equals(System.getProperty("remote"), "autotest.cloud"))
+        if (System.getProperty("remote") != null)
             Configuration.remote = format("https://%s:%s@selenoid.autotests.cloud/wd/hub", System.getProperty("remoteUser"), System.getProperty("remoteUserPassword"));
     }
 
