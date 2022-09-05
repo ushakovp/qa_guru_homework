@@ -1,11 +1,8 @@
 package com.demoqa.tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.logevents.SelenideLogger;
 import com.demoqa.pages.RegistrationFormPage;
 import com.demoqa.utils.RandomDataGenerator;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,8 +14,9 @@ import java.util.stream.Stream;
 
 import static com.demoqa.utils.ExpectedResultsHelper.expectedDayOfBirth;
 import static com.demoqa.utils.ExpectedResultsHelper.expectedSubjects;
+import static io.qameta.allure.Allure.step;
 
-public class RegistrationFromTests {
+public class RegistrationFromTests extends TestBase {
 
     RandomDataGenerator randomDataGenerator = new RandomDataGenerator();
     private final String city = randomDataGenerator.getRandomCity();
@@ -36,12 +34,6 @@ public class RegistrationFromTests {
     private final String address = randomDataGenerator.getRandomAddress();
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
-    @BeforeAll
-    static void configure() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-    }
 
     static Stream<Arguments> fillFormMinimalWithParametrizedSubjectsTest() {
         return Stream.of(
@@ -51,6 +43,7 @@ public class RegistrationFromTests {
         );
     }
 
+    @Disabled
     @DisplayName("Отправляется форма заполеннная случайными данными")
     @Test
     public void fillFormTest() {
@@ -92,22 +85,31 @@ public class RegistrationFromTests {
     @DisplayName("Отправляется форма заполненная минимальным количеством данных")
     @Test
     public void fillFormMinimalTest() {
-        registrationFormPage.openPage()
-                .setName(name)
-                .setLastName(lastName)
-                .setGender(gender)
-                .setTelephoneNumber(telephoneNumber)
-                .submit();
 
-        String expectedFullName = name + " " + lastName;
+        step("Open registrations form", () -> {
+            registrationFormPage.openPage();
+        });
 
-        registrationFormPage.checkResultsTableVisible()
-                .checkResult("Student Name", expectedFullName)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", telephoneNumber)
-                .closeModal();
+        step("Fill form", () -> {
+            registrationFormPage.setName(name)
+                    .setLastName(lastName)
+                    .setGender(gender)
+                    .setTelephoneNumber(telephoneNumber)
+                    .submit();
+        });
+
+        step("Check form results", () -> {
+            String expectedFullName = name + " " + lastName;
+
+            registrationFormPage.checkResultsTableVisible()
+                    .checkResult("Student Name", expectedFullName)
+                    .checkResult("Gender", gender)
+                    .checkResult("Mobile", telephoneNumber)
+                    .closeModal();
+        });
     }
 
+    @Disabled
     @ValueSource(strings = {"Male", "Female", "Other"})
     @ParameterizedTest(name = "Отправляется форма с гендером {0}")
     public void fillFormMinimalWithAllGendersTest(String testData) {
@@ -127,6 +129,7 @@ public class RegistrationFromTests {
                 .closeModal();
     }
 
+    @Disabled
     @MethodSource()
     @ParameterizedTest(name = "Отправляется форма с subject {0}")
     public void fillFormMinimalWithParametrizedSubjectsTest(String[] testData) {
