@@ -4,6 +4,7 @@ import com.demoqa.pages.RegistrationFormPage;
 import com.demoqa.utils.RandomDataGenerator;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -84,6 +85,7 @@ public class RegistrationFromTests extends TestBase {
 
     @DisplayName("Отправляется форма заполненная минимальным количеством данных")
     @Test
+    @Tag("minimalTest")
     public void fillFormMinimalTest() {
 
         step("Open registrations form", () -> {
