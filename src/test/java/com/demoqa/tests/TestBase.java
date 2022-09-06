@@ -27,7 +27,7 @@ public class TestBase {
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
 
         if (System.getProperty("remote") != null)
-            Configuration.remote = format("https://%s:%s@selenoid.autotests.cloud/wd/hub", System.getProperty("remoteUser"), System.getProperty("remoteUserPassword"));
+            Configuration.remote = format("https://%s:%s@%s/wd/hub", System.getProperty("remoteUser"), System.getProperty("remoteUserPassword"), System.getProperty("remote"));
     }
 
     @AfterEach
