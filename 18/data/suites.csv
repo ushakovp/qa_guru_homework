@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"skipped","Tue Sep 06 04:18:10 GMT 2022","Tue Sep 06 04:18:10 GMT 2022","1","","com.demoqa.tests.RegistrationFromTests","","com.demoqa.tests.RegistrationFromTests","fillFormMinimalWithAllGendersTest","fillFormMinimalWithAllGendersTest(String)",""
+"skipped","Tue Sep 06 04:18:11 GMT 2022","Tue Sep 06 04:18:11 GMT 2022","0","","com.demoqa.tests.RegistrationFromTests","","com.demoqa.tests.RegistrationFromTests","fillFormMinimalWithParametrizedSubjectsTest","fillFormMinimalWithParametrizedSubjectsTest(String[])",""
+"broken","Tue Sep 06 04:18:11 GMT 2022","Tue Sep 06 04:18:12 GMT 2022","1451","","com.demoqa.tests.RegistrationFromTests","","com.demoqa.tests.RegistrationFromTests","fillFormMinimalTest","Отправляется форма заполненная минимальным количеством данных",""
+"skipped","Tue Sep 06 04:18:11 GMT 2022","Tue Sep 06 04:18:11 GMT 2022","0","","com.demoqa.tests.RegistrationFromTests","","com.demoqa.tests.RegistrationFromTests","fillFormTest","Отправляется форма заполеннная случайными данными",""
