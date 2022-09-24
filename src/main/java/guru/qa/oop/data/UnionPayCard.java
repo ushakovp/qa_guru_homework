@@ -1,8 +1,11 @@
 package guru.qa.oop.data;
 
 public class UnionPayCard extends Card {
-    @Override
-    public void payInCountry(Country country, int amount) {
+    public UnionPayCard() {
+        super(PaymentSystem.UNION_PAY);
+    }
 
+    protected boolean isCountryValidForThisCard(Country country) {
+        return Country.CN == country;
     }
 }

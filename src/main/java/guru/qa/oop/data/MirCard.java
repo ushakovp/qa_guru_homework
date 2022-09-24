@@ -1,8 +1,11 @@
 package guru.qa.oop.data;
 
 public class MirCard extends Card {
-    @Override
-    public void payInCountry(Country country, int amount) {
+    public MirCard() {
+        super(PaymentSystem.MIR);
+    }
 
+    protected boolean isCountryValidForThisCard(Country country) {
+        return Country.RU == country;
     }
 }

@@ -2,8 +2,12 @@ package guru.qa.oop.data;
 
 public class VisaCard extends Card {
 
-    @Override
-    public void payInCountry(Country country, int amount) {
-        System.out.println(1);
+    public VisaCard() {
+        super(PaymentSystem.VISA);
     }
+
+    protected boolean isCountryValidForThisCard(Country country) {
+        return true;
+    }
+
 }
